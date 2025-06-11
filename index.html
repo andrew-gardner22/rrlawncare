@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ЯR Lawn Care</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial Black', sans-serif;
+            background: linear-gradient(180deg, #f1f1f1 0%, #e0e0e0 100%);
+            color: #222;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: #d32f2f;
+            color: white;
+            padding: 0.75em 0.5em;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: none;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .logo-icon::before,
+        .logo-icon::after {
+            content: '';
+            position: absolute;
+            background: #d32f2f;
+        }
+
+        .logo-icon::before {
+            width: 20px;
+            height: 4px;
+            top: 10px;
+            left: 10px;
+            transform: rotate(45deg);
+        }
+
+        .logo-icon::after {
+            width: 4px;
+            height: 20px;
+            top: 10px;
+            left: 18px;
+        }
+
+        main {
+            padding: 2rem;
+            text-align: center;
+            animation: fadeIn 1s ease-in;
+        }
+
+        .services {
+            margin: 2rem 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: #d32f2f;
+        }
+
+        .card button {
+            margin-top: 0.9em;
+            background: #d32f2f;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .contact {
+            margin-top: 2rem;
+            font-size: 1.1rem;
+            animation: slideUp 1s ease-in;
+        }
+
+        footer {
+            background: #222;
+            color: #eee;
+            text-align: center;
+            padding: 1.5rem 1rem;
+        }
+
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 500px;
+            box-sizing: border-box;
+        }
+
+        .modal-content input,
+        .modal-content textarea,
+        .modal-content button {
+            width: 100%;
+            padding: 0.75rem;
+            margin: 0.5rem 0;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .modal-content button[type="submit"] {
+            background: #d32f2f;
+            color: white;
+            border: none;
+            font-weight: bold;
+        }
+
+        .modal-content button[type="button"] {
+            background: #aaa;
+            color: white;
+            border: none;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 600px) {
+            . {}
+
+            .modal-content {
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            . {}
+        }
+
+        .link {
+            color: #222;
+        }
+
+        .modal-content button {
+            cursor: pointer
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            ЯR Lawn Care
+        </div>
+        <p>Rough Cuts. Clean Lines.</p>
+    </header>
+    <main>
+        <section class="services">
+            <div class="card">
+                <h3>Ride-on & Push Mowing</h3>
+                <p>Fast and even cuts on all types of grass.</p>
+                <p><strong>$15–$40+</strong></p>
+                <button onclick="openForm('Ride-on & Push Mowing')">Book Now</button>
+            </div>
+            <div class="card">
+                <h3>Weed Whacking</h3>
+                <p>Eliminate overgrowth around trees, fences, and edges.</p>
+                <p><strong>Included with most services</strong></p>
+                <button onclick="openForm('Weed Whacking')">Book Now</button>
+            </div>
+            <div class="card">
+                <h3>Edge Trimming</h3>
+                <p>Crisp, clean borders along paths and beds.</p>
+                <p><strong>$10 standalone / Free with mow</strong></p>
+                <button onclick="openForm('Edge Trimming')">Book Now</button>
+            </div>
+            <div class="card">
+                <h3>Leaf Blowing</h3>
+                <p>Clear leaves and debris from surfaces.</p>
+                <p><strong>$5–$15 depending on area</strong></p>
+                <button onclick="openForm('Leaf Blowing')">Book Now</button>
+            </div>
+        </section>
+        <section class="contact">
+            <h2>Contact Us</h2>
+            <p>Email <a href="mailto:Andygardner222@gmail.com" class="link">Andygardner222@gmail.com</a></p>
+            <p>Serving ЯR Ranch</p>
+        </section>
+    </main>
+    <footer>
+        <p>© 2025 ЯR Lawn Care. All grass was harmed in the making of this website.</p>
+    </footer>
+
+    <div class="modal" id="formModal">
+        <div class="modal-content">
+            <form action="https://formcarry.com/s/HK5ltb5_S3b" method="POST">
+                <h2>Book a Service</h2>
+                <input id="autocomplete" type="text" name="address" placeholder="Your Address" required>
+                <input type="date" id="datePicker" name="date" required>
+                <textarea name="message" id="messageBox" placeholder="I would like to book [service]" required></textarea>
+                <button type="submit">Submit</button>
+                <button type="button" onclick="closeForm()">Cancel</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function openForm(service) {
+            document.getElementById('formModal').classList.add('active');
+            const date = document.getElementById('datePicker').value;
+            document.getElementById('messageBox').value = `I would like to book ${service}`;
+        }
+
+        function closeForm() {
+            document.getElementById('formModal').classList.remove('active');
+        }
+
+        function initAutocomplete() {
+            const autocomplete = new google.maps.places.Autocomplete(
+                document.getElementById('autocomplete'), {
+                    types: ['address'],
+                    componentRestrictions: {
+                        country: 'us'
+                    }
+                }
+            );
+        }
+
+        window.onload = initAutocomplete;
+    </script>
+</body>
+
+</html>
